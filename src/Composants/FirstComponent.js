@@ -25,10 +25,13 @@ class FirstComponent extends Component {
         return(
             <div>
             <p> Ma plateforme de streaming musical en p2p ! ;) </p>
-            <br></br><br></br><br></br><br></br><br></br>
+            <br></br>
             <button onDoubleClick = {this.lecture} onClick = {this.pause} > <h1> {this.state.musique} </h1> </button>
+            <br></br><br></br>
+            <p>Que souhaites-tu écouter ? </p>
+            <input type ="text"/>
+            <button>  Entrer </button>
             <br></br><br></br><br></br><br></br>
-            <h5>By</h5>
             {this.props.names.map((pres)  =>
             <p key = {pres.id}> {pres.name} {pres.firstname} </p> 
             )}
