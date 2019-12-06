@@ -15,7 +15,7 @@ class FirstComponent extends Component {
         });
     }
 
-    pause = () => {
+    pause = () => { 
         this.setState({
             musique : 'Ecouter la musique' 
         });
@@ -23,19 +23,19 @@ class FirstComponent extends Component {
 
     render(){
         return(
-            <div>
-            <p> Ma plateforme de streaming musical en p2p ! ;) </p>
-            <br></br>
-            <button onDoubleClick = {this.lecture} onClick = {this.pause} > <h1> {this.state.musique} </h1> </button>
-            <br></br><br></br>
-            <p>Que souhaites-tu écouter ? </p>
-            <input type ="text"/>
-            <button>  Entrer </button>
-            <br></br><br></br><br></br><br></br>
-            {this.props.names.map((pres)  =>
-            <p key = {pres.id}> {pres.name} {pres.firstname} </p> 
-            )}
-            </div>
+            <React.Fragment>
+                <p> Ma plateforme de streaming musical en p2p ! ;) </p>
+                <br/>
+                <button onDoubleClick = {this.lecture} onClick = {this.pause} > <h1> {this.state.musique} </h1> </button>
+                <br/><br/>
+                <p>Que souhaites-tu écouter ? </p>
+                <input type ="text"/>
+                 <button>  Entrer </button>
+                 <br/><br/> 
+                {this.props.names.map((pres)  =>
+                <p key = {pres.id}> {pres.name} {pres.firstname} </p> 
+                )}
+            </React.Fragment>
         )
     }
 }

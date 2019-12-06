@@ -1,46 +1,25 @@
 import React, { Component } from 'react';
 import './App.css';
-import FirstComponent from './Composants/FirstComponent.js';
+import { BrowserRouter as Router, Route } from "react-router-dom";
 import  'bootstrap/dist/css/bootstrap.min.css';
-import Header from './Composants/Header';
+
+import ListMusic from './Composants/MusicList'
+import Header from './Composants/Header'
+import Menu from './Menu'
+import Inscription from './Composants/Inscription'
+
 
 class App extends Component {
-
-  state = {
-    presentation : [
-      {
-        id : 1, 
-        name : 'Perez',
-        firstname : 'Alexandre'
-      },
-      {
-        id : 2, 
-        name : 'Pauty',
-        firstname : 'Camille'
-      },
-      {
-        id : 3, 
-        name : 'Engel',
-        firstname : 'Matthieu'
-      },
-      {
-        id : 4, 
-        name : 'Guessous',
-        firstname : 'Alec'
-      },
-    ]
-  }
 
 
   render(){
     return (
-      <div className="App">
-        <header className="App-header">
-        <Header />
-          <h2> BTC Radio Stream </h2>
-          <FirstComponent names = {this.state.presentation}/>
-        </header>
-      </div>
+        <Router>
+          <Header/>
+           <Route path ="/" exact component = {Menu} />
+           <Route path="/ListMusic" component={ListMusic} />
+           <Route path="/Inscription" component={Inscription} />
+        </Router>
     );
   }
 } 

@@ -7,6 +7,11 @@ h2 {
   font-size : 40px;
 }
 
+h3 {
+  color : black;
+  font-size : 40px;
+}
+
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
