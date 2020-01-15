@@ -16,6 +16,8 @@
     "deploy": "npm run build&&gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "docker:up": "docker run --name pi2c -d -p 2369:3000 pi2",
+    "docker:stop": "docker stop pi2c",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },

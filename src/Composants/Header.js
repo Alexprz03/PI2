@@ -14,7 +14,7 @@ export default class Header extends Component {
                     <div className="collpase navbar-collapse">
                     <ul className="navbar-nav mr-auto">
                         <li className="navbar-item">
-                        <a href="/ListMusic" className="nav-link">Liste des musiques disponibles</a>
+                        <a href="/ListMusic" className="nav-link">Liste des stations disponibles</a>
                         </li>
                         <li className="navbar-item">
                         <a href="/Inscription" className="nav-link">Inscription</a>
