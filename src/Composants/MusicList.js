@@ -21,20 +21,22 @@ export default class ListMusic extends Component {
         }
     }
     componentDidMount(){
-        axios.get('https://demo.azuracast.com/api/stations')
+        axios.get('https://blockchain.info/tobtc?currency=EUR&value=1')
         .then(reponse=>{
             this.setState({
-                test:reponse.data[0].shortcode
+                test:reponse.data
             })
         })
     }
+    
     render() {
 
     
         return(
             <div>
-               
+                 <header className="App-header">
                  {this.state.test}
+                 </header>
             </div>
             
         )

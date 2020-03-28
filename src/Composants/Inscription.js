@@ -1,7 +1,91 @@
-import React, {Component} from 'react';
+import React, {useState, Component} from 'react';
+import '../App.css';
+
+import fire from '../config/fire';
+
 
 export default class Inscription extends Component {
+    constructor(props){
+        super(props)
+        this.state={
+            email: '',
+            password:'',
+            fireErrors:'',
+            formTitle:'Connexion',
+            loginBtn: true
+        };
+    }
 
+    handleChange=e=>{
+        this.setState({[e.target.name]:e.target.value})
+    }
+
+    login=e=>{
+        e.preventDefault();
+        fire.auth().signInWithEmailAndPassword(this.state.email, this.state.password)
+            .catch((error)=>{
+                this.setState({fireErrors: error.message})
+            });
+    }
+
+    register=e=>{
+        e.preventDefault();
+        fire.auth().createUserWithEmailAndPassword(this.state.email, this.state.password)
+            .catch((error)=>{
+                this.setState({fireErrors: error.message})
+            });
+    }
+
+    getAction = action =>{
+        if(action === 'reg'){
+            this.setState({formTitle:"Inscription", loginBtn:false, fireErrors:''});}
+        else{
+            this.setState({formTitle:"Connexion", loginBtn:true, fireErrors:''});
+        }
+    }
+
+    render(){
+
+
+        let errorNotification=this.state.fireErrors ?
+            (<div classname="Error">{this.state.fireErrors}</div>) :null;
+
+        let submitBtn = this.state.loginBtn?
+            (<input className="loginBtn" type="submit" onClick={this.login} value="Entrer"/>):
+            (<input className="loginBtn" type="submit" onClick={this.register} value="S'inscrire"/>)
+
+        let login_register = this.state.loginBtn ?
+            (<button className="registerBtn" onClick={()=> this.getAction('reg')}>Inscription</button>):
+            (<button className="registerBtn" onClick={()=> this.getAction('login')}>Connexion</button>)
+        
+
+        return(        
+          <div className="form_block">
+            <div id="title">{this.state.formTitle}</div>
+            <div clasName="body">
+                {errorNotification}
+                <form>
+                    <input type="text"
+                    value={this.state.email}
+                    onChange={this.handleChange}
+                    placeholder="Email"
+                    name="email"/>
+
+                    <input type="password"
+                    value={this.state.password}
+                    onChange={this.handleChange}
+                    placeholder="Mot de passe"
+                    name="password"/>
+
+                    {submitBtn}
+                </form>
+                    {login_register}
+            </div>
+          </div>
+        )
+    }
+
+/*
     state = {
         nom :'',
         prenom : '',
@@ -91,4 +175,5 @@ export default class Inscription extends Component {
             </div>
         )
     }
+    */
 }
