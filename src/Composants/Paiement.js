@@ -30,7 +30,8 @@ class Paiement extends Component {
         this.state={
             test:'',
             amount:'',
-            music_name:''
+            music_name:'',
+            inv:''
         }
     }
     componentDidMount(){
@@ -55,12 +56,15 @@ class Paiement extends Component {
         console.log(this.state.amount)
         if(this.state.amount !== "")
         {
+            var invoice = ""
             var amount = Number(this.state.amount)
             if(amount > 0)
             {
-                client.create_invoice({price: amount, currency: 'USD'})
+                invoice = client.create_invoice({price: amount, currency: 'USD'})
                 .then(invoice => {
                     window.open(invoice.url)
+                    this.setState({inv: Number(invoice.id)})
+                    return invoice.id
                 })
                 .catch(err => console.log(err))
             }

@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import fire from '../config/fire';
 import axios from 'axios';
-import ReactPlayer from "react-player"
 
 class FirstComponent extends Component {
 
@@ -46,6 +45,22 @@ class FirstComponent extends Component {
 
     logout= () =>{
         fire.auth().signOut();
+    }
+
+
+    loadNowPlaying() {
+        var nowPlaying;
+        var nowPlayingTimeout;
+
+        axios.get('https://demo.azuracast.com/api/nowplaying').then((response) => {
+            // Do something with the Now Playing data.
+            nowPlaying = response.data;
+        }).catch((error) => {
+            console.error(error);
+        }).then(() => {
+            clearTimeout(nowPlayingTimeout);
+            nowPlayingTimeout = setTimeout(nowPlaying, 15000);
+        });
     }
 
 
