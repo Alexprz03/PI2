@@ -7,60 +7,13 @@ class FirstComponent extends Component {
     constructor(){
         super();
         this.state = { 
-            play: false,
-            pause: true,
-            musique: 'Play'
-        }
-        this.url = "http://88.140.197.167/radio/8000/radio.mp3";
-        this.audio = new Audio(this.url);
-    }
 
-    lecture = () => {
-        this.setState({
-            musique : 'Arreter la musique' 
-        });
-    }
-
-    play = () => {
-        this.setState({ play: true, pause: false, musique: 'Pause' })
-          this.audio.play();
         }
 
-    pause = () => {
-        this.setState({ play: false, pause: true, musique: 'Play' })
-            this.audio.pause();
-        }
-
-    change_status()
-    {
-        if(this.state.musique === 'Pause')
-        {
-            return this.pause
-        }
-        else
-        {
-            return this.play
-        }
     }
 
     logout= () =>{
         fire.auth().signOut();
-    }
-
-
-    loadNowPlaying() {
-        var nowPlaying;
-        var nowPlayingTimeout;
-
-        axios.get('https://demo.azuracast.com/api/nowplaying').then((response) => {
-            // Do something with the Now Playing data.
-            nowPlaying = response.data;
-        }).catch((error) => {
-            console.error(error);
-        }).then(() => {
-            clearTimeout(nowPlayingTimeout);
-            nowPlayingTimeout = setTimeout(nowPlaying, 15000);
-        });
     }
 
 
@@ -70,8 +23,8 @@ class FirstComponent extends Component {
 
                 <p> Ma plateforme de streaming musical en p2p ! ;) </p>
                 <br/>
-                <button onClick = {this.change_status()} > <h1> {this.state.musique} </h1> </button>
                 <br/><br/>
+                <iframe title= "myFrame" class= "frame" src="http://88.140.197.167/public/radio_bitcoin/embed" frameborder="0" allowtransparency="true" ></iframe>
                 <p>Que souhaites-tu écouter ? </p>
                 <input type ="text" name="musics"/>
                  <button>Entrer</button>

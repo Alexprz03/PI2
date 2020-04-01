@@ -2,7 +2,7 @@
   "name": "my-app",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://nespetit.github.io/app_react",
+  "homepage": "https://alexprz03.github.io/webapp",
   "dependencies": {
     "async-await": "^0.1.40",
     "asyncawait": "^3.0.0",
@@ -13,7 +13,6 @@
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "firebase": "^7.13.1",
-    "gh-pages": "^2.1.1",
     "mongoose": "^5.9.1",
     "nodemon": "^2.0.2",
     "react": "^16.11.0",
@@ -46,5 +45,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "gh-pages": "^2.2.0"
   }
 }
